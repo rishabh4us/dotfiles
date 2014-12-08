@@ -8,11 +8,16 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'          " let Vundle manage Vundle, required
+
+""" UTILS
+Plugin 'xolox/vim-misc'             " necessary for xolox plugins
+Plugin 'xolox/vim-easytags'         " keep your tags files up-to-date. Uses exuberant ctags 
+Plugin 'majutsushi/tagbar'          " provides an easy way to browse the tags of the current file
+Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert completion needs
+Plugin 'vim-scripts/Gundo'          " visualize the Vim undo tree
+Plugin 'terryma/vim-multiple-cursors' " Sublime Text's awesome multiple selection feature into Vim
 
 """ MOTION 
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -22,37 +27,49 @@ Plugin 'bkad/CamelCaseMotion'       " transform the concept of a word to use Cam
 """ APPEARANCE 
 Plugin 'scrooloose/nerdcommenter'   " comments lines out
 Plugin 'airblade/vim-gitgutter'     " shows a git diff in the 'gutter' (sign column)
-Plugin 'kshenoy/vim-signature'      " vim-signature is a plugin to place, toggle and display marks.
+Plugin 'kshenoy/vim-signature'      " plugin to place, toggle and display marks
 Plugin 'sjl/badwolf'                " awesome colorscheme
 
 """ SYNTAX 
 Plugin 'scrooloose/syntastic'       " syntax checking plugin
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()                    " required
+filetype plugin indent on            " required
+set omnifunc=syntaxcomplete#Complete " omnicompletion enabled
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
-" Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Config 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+let mapleader=","
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader=","
 
-""" EASYMOTION
+""" to move faster across splits
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+""" Gundo
+nnoremap <unique> <C-u> :GundoToggle<CR>
+
+""" TagBar 
+map <unique> <C-b> :TagbarToggle<CR>
+
+""" Easymotion 
 " Replace the default search with easymotion
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
@@ -60,10 +77,10 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 " jump to any word remapped on space
-nmap <space> <Plug>(easymotion-bd-w)
+nmap <unique> <space> <Plug>(easymotion-bd-w)
 
 
-""" CAMELCASEMOTION
+""" CamelCaseMotion
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
 map <silent> e <Plug>CamelCaseMotion_e
@@ -100,6 +117,7 @@ set relativenumber      " show relative line numbers
 set cursorline          " highlight current line
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
+set colorcolumn=80      " set column at 80 character
 
 """ SEARCH 
 set incsearch           " search as characters are entered
