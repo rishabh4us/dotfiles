@@ -82,6 +82,14 @@ nmap <unique> <space> <Plug>(easymotion-bd-w)
 """ CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
 
 """ CamelCaseMotion
 map <silent> w <Plug>CamelCaseMotion_w
@@ -106,6 +114,8 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 syntax on
 filetype indent on      " load filetype-specific indent files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
 
 """ TABS 
 set shiftwidth=4 
