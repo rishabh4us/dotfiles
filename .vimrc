@@ -18,6 +18,7 @@ Plugin 'majutsushi/tagbar'          " provides an easy way to browse the tags of
 Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert completion needs
 Plugin 'vim-scripts/Gundo'          " visualize the Vim undo tree
 Plugin 'terryma/vim-multiple-cursors' " Sublime Text's awesome multiple selection feature into Vim
+Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
 
 """ MOTION 
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -46,16 +47,15 @@ set omnifunc=syntaxcomplete#Complete " omnicompletion enabled
 "
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin Config 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
-let mapleader=","
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let mapleader=","
+
+""" SuperTab
+let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
 
 """ to move faster across splits
 map <c-j> <c-w>j
@@ -79,6 +79,9 @@ map  N <Plug>(easymotion-prev)
 " jump to any word remapped on space
 nmap <unique> <space> <Plug>(easymotion-bd-w)
 
+""" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 """ CamelCaseMotion
 map <silent> w <Plug>CamelCaseMotion_w
@@ -110,7 +113,7 @@ set tabstop=4           " number of visual spaces per TAB
 set softtabstop=4       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
 
-""" VISUAL UI 
+""" Appearance
 set laststatus=2
 set number              " show line numbers
 set relativenumber      " show relative line numbers
@@ -118,6 +121,8 @@ set cursorline          " highlight current line
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
 set colorcolumn=80      " set column at 80 character
+set lazyredraw          " redraw only when we need to.
+set foldenable          " enable folding
 
 """ SEARCH 
 set incsearch           " search as characters are entered
