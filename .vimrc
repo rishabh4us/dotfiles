@@ -74,7 +74,7 @@ map <c-h> <c-w>h
 nnoremap <unique> <C-u> :GundoToggle<CR>
 
 """ TagBar 
-map <unique> <C-b> :TagbarToggle<CR>
+map <unique> <C-0> :TagbarToggle<CR>
 
 """ Easymotion 
 " Replace the default search with easymotion
