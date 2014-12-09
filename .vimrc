@@ -121,6 +121,7 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 syntax on
 filetype indent on      " load filetype-specific indent files
+setlocal spell 
 
 " OSX bullshit
 set wildignore+=*.DS_Store
