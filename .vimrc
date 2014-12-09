@@ -19,7 +19,8 @@ Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert complet
 Plugin 'vim-scripts/Gundo'          " visualize the Vim undo tree
 Plugin 'terryma/vim-multiple-cursors' " Sublime Text's awesome multiple selection feature into Vim
 Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
-
+Plugin 'klen/python-mode'           " pylint, rope, pydoc, pyflakes, pep8, and mccabe  
+Plugin 'alfredodeza/pytest.vim'     " way of running py.test from within VIM
 """ MOTION 
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
 Plugin 'Lokaltog/vim-easymotion'    " jump anywhere quickly 
@@ -53,6 +54,12 @@ set omnifunc=syntaxcomplete#Complete " omnicompletion enabled
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader=","
+
+""" Pytest
+nmap <silent><Leader>t <Esc>:Pytest file verbose<CR>
+nmap <silent><Leader>c <Esc>:Pytest class<CR>
+nmap <silent><Leader>m <Esc>:Pytest method<CR>
+nmap <silent><Leader>f <Esc>:Pytest function<CR>
 
 """ SuperTab
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
@@ -114,7 +121,28 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 syntax on
 filetype indent on      " load filetype-specific indent files
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+" OSX bullshit
+set wildignore+=*.DS_Store
+" Version control
+set wildignore+=.hg,.git,.svn
+" vim
+set wildignore+=*.sw?,*.un?
+" images
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+" object files
+set wildignore+=*.o,*.obj,*.so,*.a
+" Haskell
+set wildignore+=*.hi
+" Java
+set wildignore+=*.class
+" LaTeX
+set wildignore+=*.aux,*.out,*.toc
+" Python
+set wildignore+=.tox,*.pyc,*.pyo
+" misc
+set wildignore+=*/tmp/**,*.zip
+
 
 
 """ TABS 
@@ -126,13 +154,17 @@ set expandtab           " tabs are spaces
 """ Appearance
 set laststatus=2
 set number              " show line numbers
-set relativenumber      " show relative line numbers
+set relativenumber
+setglobal relativenumber " show relative line numbers
 set cursorline          " highlight current line
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
 set colorcolumn=80      " set column at 80 character
 set lazyredraw          " redraw only when we need to.
+
 set foldenable          " enable folding
+set foldmethod=indent   " fold based on indent level
+set foldlevelstart=10   " open most folds by default
 
 """ SEARCH 
 set incsearch           " search as characters are entered
