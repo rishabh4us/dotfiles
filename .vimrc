@@ -19,8 +19,9 @@ Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert complet
 Plugin 'vim-scripts/Gundo'          " visualize the Vim undo tree
 Plugin 'terryma/vim-multiple-cursors' " Sublime Text's awesome multiple selection feature into Vim
 Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
-Plugin 'klen/python-mode'           " pylint, rope, pydoc, pyflakes, pep8, and mccabe  
+"Plugin 'klen/python-mode'           " pylint, rope, pydoc, pyflakes, pep8, and mccabe  
 Plugin 'alfredodeza/pytest.vim'     " way of running py.test from within VIM
+
 """ MOTION 
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
 Plugin 'Lokaltog/vim-easymotion'    " jump anywhere quickly 
@@ -48,33 +49,81 @@ set omnifunc=syntaxcomplete#Complete " omnicompletion enabled
 "
 
 
+let mapleader=","
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin config
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""" Syntastic
+"let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_python_flake8_args = '--config=$HOME/.config/flake8'
+"let g:syntastic_python_flake8_args = '--max-line-length=131 --max-complexity=10'
+
+""" SuperTab
+let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+
+""" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+" use external tools for finding files, faster for large directories
+let g:ctrlp_user_command = {
+    \ 'types': {
+        \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
+        \ 2: ['.hg', 'hg --cwd %s status -numac -I . $(hg root)'],
+    \ },
+    \ 'fallback': "find %s " .
+        \ "-type f" .
+        \ "-regextype posix-egrep" .
+        \ "! -path './.hg/*'" .
+        \ "! -path './.git/*'" .
+        \ "! -path './.svn/*'" .
+        \ "! -path './.tox/*'" .
+        \ "! -path '*.egg-info*/*'" .
+        \ "! -path '*.build.*'" .
+        \ "! -path './venv*/*'" .
+        \ "! -path './virtualenv*/*'"
+    \ }
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let mapleader=","
+" tab navigation like chrome NOT WORKING
+"nnoremap <C-S-tab> :tabprevious<CR>
+"nnoremap <C-tab>   :tabnext<CR>
+"nnoremap <C-t>     :tabnew<CR>
+"inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+"inoremap <C-tab>   <Esc>:tabnext<CR>i
+"inoremap <C-t>     <Esc>:tabnew<CR>
 
-""" Pytest
-nmap <silent><Leader>t <Esc>:Pytest file verbose<CR>
-nmap <silent><Leader>c <Esc>:Pytest class<CR>
-nmap <silent><Leader>m <Esc>:Pytest method<CR>
-nmap <silent><Leader>f <Esc>:Pytest function<CR>
-
-""" SuperTab
-let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
-
-""" to move faster across splits
+" to move faster across splits
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+
+""" Pytest
+nmap <silent><Leader>t <Esc>:Pytest file verbose<CR>
+nmap <silent><Leader>c <Esc>:Pytest class verbose<CR>
+nmap <silent><Leader>m <Esc>:Pytest method verbose<CR>
+nmap <silent><Leader>f <Esc>:Pytest function verbose<CR>
+
 """ Gundo
 nnoremap <unique> <C-u> :GundoToggle<CR>
 
 """ TagBar 
-map <unique> <C-0> :TagbarToggle<CR>
+map <unique> <F1> :TagbarToggle<CR>
 
 """ Easymotion 
 " Replace the default search with easymotion
@@ -85,17 +134,6 @@ map  N <Plug>(easymotion-prev)
 
 " jump to any word remapped on space
 nmap <unique> <space> <Plug>(easymotion-bd-w)
-
-""" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
 
 
 """ CamelCaseMotion
@@ -119,9 +157,13 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 " General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 syntax on
 filetype indent on      " load filetype-specific indent files
 setlocal spell 
+
+set tags=./tags;/       " work up the tree towards root until "tags" is found
+set vbs=1               " increase verbosity of vim. to show log :messages
 
 " OSX bullshit
 set wildignore+=*.DS_Store
