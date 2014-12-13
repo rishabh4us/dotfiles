@@ -56,9 +56,9 @@ let mapleader=","
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """ Syntastic
-"let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_python_checkers = ['pyflakes, pep8']
 "let g:syntastic_python_flake8_args = '--config=$HOME/.config/flake8'
-"let g:syntastic_python_flake8_args = '--max-line-length=131 --max-complexity=10'
+" let g:syntastic_python_flake8_args = '--max-line-length=131 --max-complexity=10'
 
 """ SuperTab
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
@@ -163,7 +163,7 @@ filetype indent on      " load filetype-specific indent files
 setlocal spell 
 
 set tags=./tags;/       " work up the tree towards root until "tags" is found
-set vbs=1               " increase verbosity of vim. to show log :messages
+"set vbs=1               " increase verbosity of vim. to show log :messages
 
 " OSX bullshit
 set wildignore+=*.DS_Store
