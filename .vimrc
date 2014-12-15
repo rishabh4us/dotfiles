@@ -165,6 +165,8 @@ setlocal spell
 set tags=./tags;/       " work up the tree towards root until "tags" is found
 "set vbs=1               " increase verbosity of vim. to show log :messages
 
+set mouse=a             " trying it out
+
 " OSX bullshit
 set wildignore+=*.DS_Store
 " Version control
