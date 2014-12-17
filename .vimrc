@@ -21,6 +21,7 @@ Plugin 'terryma/vim-multiple-cursors' " Sublime Text's awesome multiple selectio
 Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
 "Plugin 'klen/python-mode'           " pylint, rope, pydoc, pyflakes, pep8, and mccabe  
 Plugin 'alfredodeza/pytest.vim'     " way of running py.test from within VIM
+Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
 
 """ MOTION 
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -54,6 +55,10 @@ let mapleader=","
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""" Jedi
+
+
 
 """ Syntastic
 "let g:syntastic_python_checkers = ['pyflakes, pep8']
@@ -197,7 +202,9 @@ set softtabstop=4       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
 
 """ Appearance
-set laststatus=2
+set laststatus=2        " statusline option
+set title               " show filepath in the terminal title
+
 set number              " show line numbers
 set relativenumber
 setglobal relativenumber " show relative line numbers
@@ -207,9 +214,9 @@ set showmatch           " highlight matching [{()}]
 set colorcolumn=80      " set column at 80 character
 set lazyredraw          " redraw only when we need to.
 
-set foldenable          " enable folding
-set foldmethod=indent   " fold based on indent level
-set foldlevelstart=10   " open most folds by default
+"set foldenable          " enable folding
+"set foldmethod=indent   " fold based on indent level
+"set foldlevelstart=10   " open most folds by default
 
 """ SEARCH 
 set incsearch           " search as characters are entered
