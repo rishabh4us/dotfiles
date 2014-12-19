@@ -22,6 +22,7 @@ Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
 "Plugin 'klen/python-mode'           " pylint, rope, pydoc, pyflakes, pep8, and mccabe  
 Plugin 'alfredodeza/pytest.vim'     " way of running py.test from within VIM
 Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
+Plugin 'tpope/vim-fugitive'         " git wrapper
 
 """ MOTION 
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -33,6 +34,8 @@ Plugin 'scrooloose/nerdcommenter'   " comments lines out
 Plugin 'airblade/vim-gitgutter'     " shows a git diff in the 'gutter' (sign column)
 Plugin 'kshenoy/vim-signature'      " plugin to place, toggle and display marks
 Plugin 'sjl/badwolf'                " awesome colorscheme
+Plugin 'terryma/vim-smooth-scroll'  " Vim smooth scrool. Scroll is configurable
+Plugin 'Lokaltog/vim-powerline'     " enhanced statusline 
 
 """ SYNTAX 
 Plugin 'scrooloose/syntastic'       " syntax checking plugin
@@ -64,6 +67,9 @@ let mapleader=","
 "let g:syntastic_python_checkers = ['pyflakes, pep8']
 "let g:syntastic_python_flake8_args = '--config=$HOME/.config/flake8'
 " let g:syntastic_python_flake8_args = '--max-line-length=131 --max-complexity=10'
+"let g:syntastic_javascript_jshint_exec='/nail/workflow/jshint'
+let g:syntastic_javascript_checkers = ['jshint']
+
 
 """ SuperTab
 let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
@@ -96,6 +102,12 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
+
+""" Smooth-scroll
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 1)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 1)<CR>
+
 
 
 
@@ -164,7 +176,6 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 
 syntax on
-filetype indent on      " load filetype-specific indent files
 setlocal spell 
 
 set tags=./tags;/       " work up the tree towards root until "tags" is found
@@ -202,7 +213,6 @@ set softtabstop=4       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
 
 """ Appearance
-set laststatus=2        " statusline option
 set title               " show filepath in the terminal title
 
 set number              " show line numbers
@@ -226,6 +236,25 @@ set ignorecase          " ignore case while searching
 set t_Co=256            " set terminal to 256 colours to use badwolf
 colorscheme badwolf
 
+
+
+""" Statusline
+if has('statusline')
+      set laststatus=2
+      " Broken down into easily includeable segments
+      "set statusline=%<%f\    " Filename
+      "set statusline+=%w%h%m%r " Options
+
+    set statusline+=%{fugitive#statusline()} "  Git branch on statusline
+      "set statusline+=%{fugitive#statusline()} "  Git Hotness
+      "set statusline+=\ [%{&ff}/%Y]            " filetype
+      "set statusline+=\ [%{getcwd()}]          " current dir
+      "set statusline+=%#warningmsg#
+      "set statusline+=%{SyntasticStatuslineFlag()}
+      "set statusline+=%*
+      "let g:syntastic_enable_signs=1
+      "set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
 
 
 
@@ -253,3 +282,9 @@ colorscheme badwolf
     "return 1
   "endif
 "endfunction
+
+
+""" highlight word under cursor
+:autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
+
