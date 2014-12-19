@@ -13,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'          " let Vundle manage Vundle, required
 
 """ UTILS
 Plugin 'xolox/vim-misc'             " necessary for xolox plugins
-Plugin 'xolox/vim-easytags'         " keep your tags files up-to-date. Uses exuberant ctags 
+"Plugin 'xolox/vim-easytags'         " keep your tags files up-to-date. Uses exuberant ctags 
 Plugin 'majutsushi/tagbar'          " provides an easy way to browse the tags of the current file
 Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert completion needs
 Plugin 'vim-scripts/Gundo'          " visualize the Vim undo tree
@@ -23,6 +23,7 @@ Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
 Plugin 'alfredodeza/pytest.vim'     " way of running py.test from within VIM
 Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
 Plugin 'tpope/vim-fugitive'         " git wrapper
+Plugin 'rking/ag.vim'               " text search into files
 
 """ MOTION 
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -168,6 +169,8 @@ xmap <silent> ib <Plug>CamelCaseMotion_ib
 omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
+""" Ag.vim
+nnoremap \ :Ag<SPACE>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
