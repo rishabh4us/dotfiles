@@ -36,7 +36,8 @@ Plugin 'airblade/vim-gitgutter'     " shows a git diff in the 'gutter' (sign col
 Plugin 'kshenoy/vim-signature'      " plugin to place, toggle and display marks
 Plugin 'sjl/badwolf'                " awesome colorscheme
 Plugin 'terryma/vim-smooth-scroll'  " Vim smooth scrool. Scroll is configurable
-Plugin 'Lokaltog/vim-powerline'     " enhanced statusline 
+"Plugin 'Lokaltog/vim-powerline'     " enhanced statusline 
+Plugin 'bling/vim-airline'          " best statusline, shows also buffers to the top
 
 """ SYNTAX 
 Plugin 'scrooloose/syntastic'       " syntax checking plugin
@@ -110,6 +111,9 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 1)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 1)<CR>
 
 
+""" Airline
+let g:airline#extensions#tabline#enabled = 1
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -123,6 +127,9 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 1)<CR>
 "inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 "inoremap <C-tab>   <Esc>:tabnext<CR>i
 "inoremap <C-t>     <Esc>:tabnew<CR>
+
+""" ctrlP
+nnoremap <Leader>b :CtrlPBuffer<CR>
 
 " to move faster across splits
 map <c-j> <c-w>j
@@ -171,7 +178,7 @@ xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 """ Ag.vim
 nnoremap \ :Ag<SPACE>
-
+"nnoremap 8 :AgFromSearch<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Settings
@@ -244,12 +251,12 @@ colorscheme badwolf
 """ Statusline
 if has('statusline')
       set laststatus=2
+      set noruler
       " Broken down into easily includeable segments
       "set statusline=%<%f\    " Filename
       "set statusline+=%w%h%m%r " Options
 
     set statusline+=%{fugitive#statusline()} "  Git branch on statusline
-      "set statusline+=%{fugitive#statusline()} "  Git Hotness
       "set statusline+=\ [%{&ff}/%Y]            " filetype
       "set statusline+=\ [%{getcwd()}]          " current dir
       "set statusline+=%#warningmsg#
