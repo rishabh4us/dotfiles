@@ -116,7 +116,7 @@ fi
 # git branch on prompt
 if [ -f ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
-    PS1=$PS1'$(__git_ps1 " (%s)")'
+    PS1=$PS1'\[\e[1;36m\]$(__git_ps1 " (%s)")\[\e[0m\]'
 fi
 
 # prompt always on a new line
