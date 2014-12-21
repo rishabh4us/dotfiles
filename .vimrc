@@ -145,7 +145,7 @@ nmap <silent><Leader>m <Esc>:Pytest method verbose<CR>
 nmap <silent><Leader>f <Esc>:Pytest function verbose<CR>
 
 """ Gundo
-nnoremap <unique> <C-u> :GundoToggle<CR>
+nnoremap <unique> <Leader>u :GundoToggle<CR>
 
 """ TagBar 
 map <unique> <F1> :TagbarToggle<CR>
@@ -184,14 +184,15 @@ nnoremap \ :Ag<SPACE>
 " General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set updatetime=750
 
 syntax on
 setlocal spell 
 
-set tags=./tags;/       " work up the tree towards root until "tags" is found
+"set tags=./tags;/       " work up the tree towards root until "tags" is found
 "set vbs=1               " increase verbosity of vim. to show log :messages
 
-set mouse=a             " trying it out
+"set mouse=a             " trying it out
 
 " OSX bullshit
 set wildignore+=*.DS_Store
@@ -295,6 +296,6 @@ endif
 
 
 """ highlight word under cursor
-:autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 
