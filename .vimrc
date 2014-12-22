@@ -233,6 +233,7 @@ set cursorline          " highlight current line
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
 set colorcolumn=80      " set column at 80 character
+autocmd bufreadpre *.tex setlocal textwidth=80 " new line at 80 char
 set lazyredraw          " redraw only when we need to.
 
 "set foldenable          " enable folding
