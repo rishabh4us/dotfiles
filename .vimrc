@@ -58,7 +58,7 @@ set omnifunc=syntaxcomplete#Complete " omnicompletion enabled
 
 let mapleader=","
 
-:autocmd! *     " Remove ALL autocommands for all groups so in case the 
+":autocmd! *     " Remove ALL autocommands for all groups so in case the 
                 " file is sourced twice, autocmds do not appear twice
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -115,6 +115,7 @@ set showmatch           " highlight matching [{()}]
 set colorcolumn=80      " set column at 80 character
 autocmd bufreadpre *.tex setlocal textwidth=80 " new line at 80 char
 set lazyredraw          " redraw only when we need to.
+set backspace=2         " make backspace work like most other apps
 
 "set foldenable          " enable folding
 "set foldmethod=indent   " fold based on indent level
@@ -130,8 +131,8 @@ set t_Co=256            " set terminal to 256 colours to use badwolf
 colorscheme badwolf
 
 set spell 
-hi SpellBad ctermbg=196  " background color for bad spelled words
-autocmd ColorScheme * :hi SpellBad ctermbg=196  " background color for bad spelled words
+"hi SpellBad ctermbg=196  " background color for bad spelled words
+"autocmd ColorScheme * :hi SpellBad ctermbg=196  " background color for bad spelled words
 
 
 
