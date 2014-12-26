@@ -14,6 +14,7 @@ Plugin 'gmarik/Vundle.vim'          " let Vundle manage Vundle, required
 """ UTILS
 Plugin 'xolox/vim-misc'             " necessary for xolox plugins
 "Plugin 'xolox/vim-easytags'         " keep your tags files up-to-date. Uses exuberant ctags 
+"Plugin 'godlygeek/tabular'         " need to give this a try
 Plugin 'majutsushi/tagbar'          " provides an easy way to browse the tags of the current file
 Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert completion needs
 Plugin 'vim-scripts/Gundo'          " visualize the Vim undo tree
@@ -66,11 +67,14 @@ let mapleader=","
 
 
 """ Syntastic
-"let g:syntastic_python_checkers = ['pyflakes, pep8']
+let g:syntastic_python_checkers=['pep8']
+let g:syntastic_python_pep8_args='--ignore=E501'
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_jump=1
 "let g:syntastic_python_flake8_args = '--config=$HOME/.config/flake8'
 " let g:syntastic_python_flake8_args = '--max-line-length=131 --max-complexity=10'
 "let g:syntastic_javascript_jshint_exec='/nail/workflow/jshint'
-let g:syntastic_javascript_checkers = ['jshint']
+"let g:syntastic_javascript_checkers = ['jshint']
 
 
 """ SuperTab
