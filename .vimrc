@@ -58,6 +58,108 @@ set omnifunc=syntaxcomplete#Complete " omnicompletion enabled
 
 let mapleader=","
 
+:autocmd! *     " Remove ALL autocommands for all groups so in case the 
+                " file is sourced twice, autocmds do not appear twice
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set updatetime=750
+
+syntax on
+
+"set tags=./tags;/       " work up the tree towards root until 'tags' is found
+"set vbs=1               " increase verbosity of vim. to show log :messages
+
+"set mouse=a             " trying it out
+
+" OSX bullshit
+set wildignore+=*.DS_Store
+" Version control
+set wildignore+=.hg,.git,.svn
+" vim
+set wildignore+=*.sw?,*.un?
+" images
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+" object files
+set wildignore+=*.o,*.obj,*.so,*.a
+" Haskell
+set wildignore+=*.hi
+" Java
+set wildignore+=*.class
+" LaTeX
+set wildignore+=*.aux,*.out,*.toc
+" Python
+set wildignore+=.tox,*.pyc,*.pyo
+" misc
+set wildignore+=*/tmp/**,*.zip
+
+
+
+""" TABS 
+set shiftwidth=4 
+set tabstop=4           " number of visual spaces per TAB
+set softtabstop=4       " number of spaces in tab when editing
+set expandtab           " tabs are spaces
+
+""" Appearance
+set title               " show filepath in the terminal title
+
+set number              " show line numbers
+set relativenumber
+setglobal relativenumber " show relative line numbers
+set cursorline          " highlight current line
+set wildmenu            " visual autocomplete for command menu
+set showmatch           " highlight matching [{()}]
+set colorcolumn=80      " set column at 80 character
+autocmd bufreadpre *.tex setlocal textwidth=80 " new line at 80 char
+set lazyredraw          " redraw only when we need to.
+
+"set foldenable          " enable folding
+"set foldmethod=indent   " fold based on indent level
+"set foldlevelstart=10   " open most folds by default
+
+""" SEARCH 
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+set ignorecase          " ignore case while searching
+
+set t_Co=256            " set terminal to 256 colours to use badwolf
+
+colorscheme badwolf
+
+set spell 
+hi SpellBad ctermbg=196  " background color for bad spelled words
+autocmd ColorScheme * :hi SpellBad ctermbg=196  " background color for bad spelled words
+
+
+
+
+""" Statusline
+if has('statusline')
+      set laststatus=2
+      set noruler
+      " Broken down into easily includeable segments
+      "set statusline=%<%f\    " Filename
+      "set statusline+=%w%h%m%r " Options
+
+    set statusline+=%{fugitive#statusline()} "  Git branch on statusline
+      "set statusline+=\ [%{&ff}/%Y]            " filetype
+      "set statusline+=\ [%{getcwd()}]          " current dir
+      "set statusline+=%#warningmsg#
+      "set statusline+=%{SyntasticStatuslineFlag()}
+      "set statusline+=%*
+      "let g:syntastic_enable_signs=1
+      "set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
+
+
+""" highlight word under cursor
+autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -132,14 +234,21 @@ let g:airline#extensions#tabline#enabled = 1
 "inoremap <C-tab>   <Esc>:tabnext<CR>i
 "inoremap <C-t>     <Esc>:tabnew<CR>
 
-""" ctrlP
-nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap Y y$
 
 " to move faster across splits
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
+
+
+"""""""""""""""""
+" Plugin Mappings
+
+
+""" ctrlP
+nnoremap <Leader>b :CtrlPBuffer<CR>
 
 
 """ Pytest
@@ -160,8 +269,7 @@ map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
-
-" jump to any word remapped on space
+" jump to any word 
 nmap <unique> <space> <Plug>(easymotion-bd-w)
 
 
@@ -173,133 +281,14 @@ sunmap w
 sunmap b
 sunmap e
 
-omap <silent> iw <Plug>CamelCaseMotion_iw
-xmap <silent> iw <Plug>CamelCaseMotion_iw
-omap <silent> ib <Plug>CamelCaseMotion_ib
-xmap <silent> ib <Plug>CamelCaseMotion_ib
-omap <silent> ie <Plug>CamelCaseMotion_ie
-xmap <silent> ie <Plug>CamelCaseMotion_ie
+"omap <silent> iw <Plug>CamelCaseMotion_iw
+"xmap <silent> iw <Plug>CamelCaseMotion_iw
+"omap <silent> ib <Plug>CamelCaseMotion_ib
+"xmap <silent> ib <Plug>CamelCaseMotion_ib
+"omap <silent> ie <Plug>CamelCaseMotion_ie
+"xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 """ Ag.vim
 nnoremap \ :Ag<SPACE>
 "nnoremap 8 :AgFromSearch<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set updatetime=750
-
-syntax on
-setlocal spell 
-
-"set tags=./tags;/       " work up the tree towards root until "tags" is found
-"set vbs=1               " increase verbosity of vim. to show log :messages
-
-"set mouse=a             " trying it out
-
-" OSX bullshit
-set wildignore+=*.DS_Store
-" Version control
-set wildignore+=.hg,.git,.svn
-" vim
-set wildignore+=*.sw?,*.un?
-" images
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
-" object files
-set wildignore+=*.o,*.obj,*.so,*.a
-" Haskell
-set wildignore+=*.hi
-" Java
-set wildignore+=*.class
-" LaTeX
-set wildignore+=*.aux,*.out,*.toc
-" Python
-set wildignore+=.tox,*.pyc,*.pyo
-" misc
-set wildignore+=*/tmp/**,*.zip
-
-
-
-""" TABS 
-set shiftwidth=4 
-set tabstop=4           " number of visual spaces per TAB
-set softtabstop=4       " number of spaces in tab when editing
-set expandtab           " tabs are spaces
-
-""" Appearance
-set title               " show filepath in the terminal title
-
-set number              " show line numbers
-set relativenumber
-setglobal relativenumber " show relative line numbers
-set cursorline          " highlight current line
-set wildmenu            " visual autocomplete for command menu
-set showmatch           " highlight matching [{()}]
-set colorcolumn=80      " set column at 80 character
-set lazyredraw          " redraw only when we need to.
-
-"set foldenable          " enable folding
-"set foldmethod=indent   " fold based on indent level
-"set foldlevelstart=10   " open most folds by default
-
-""" SEARCH 
-set incsearch           " search as characters are entered
-set hlsearch            " highlight matches
-set ignorecase          " ignore case while searching
-
-set t_Co=256            " set terminal to 256 colours to use badwolf
-colorscheme badwolf
-
-
-
-""" Statusline
-if has('statusline')
-      set laststatus=2
-      set noruler
-      " Broken down into easily includeable segments
-      "set statusline=%<%f\    " Filename
-      "set statusline+=%w%h%m%r " Options
-
-    set statusline+=%{fugitive#statusline()} "  Git branch on statusline
-      "set statusline+=\ [%{&ff}/%Y]            " filetype
-      "set statusline+=\ [%{getcwd()}]          " current dir
-      "set statusline+=%#warningmsg#
-      "set statusline+=%{SyntasticStatuslineFlag()}
-      "set statusline+=%*
-      "let g:syntastic_enable_signs=1
-      "set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-endif
-
-
-
-
-
-"" Highlight all instances of word under cursor, when idle.
-"" Useful when studying strange source code.
-"" Type z/ to toggle highlighting on/off.
-"nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
-"function! AutoHighlightToggle()
-  "let @/ = ''
-  "if exists('#auto_highlight')
-    "au! auto_highlight
-    "augroup! auto_highlight
-    "setl updatetime=4000
-    "echo 'Highlight current word: off'
-    "return 0
-  "else
-    "augroup auto_highlight
-      "au!
-      "au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
-    "augroup end
-    "setl updatetime=500
-    "echo 'Highlight current word: ON'
-    "return 1
-  "endif
-"endfunction
-
-
-""" highlight word under cursor
-autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-
 
