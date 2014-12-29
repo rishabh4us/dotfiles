@@ -122,3 +122,5 @@ fi
 # prompt always on a new line
 PS1=$PS1'\n\$ '
 
+VISUAL=vim
+EDITOR="$VISUAL"
