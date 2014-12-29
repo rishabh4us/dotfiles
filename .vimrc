@@ -243,6 +243,9 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+" jump to errors
+nmap [l :lprevious<CR>
+nmap ]l :lnext<CR>
 
 """""""""""""""""
 " Plugin Mappings
