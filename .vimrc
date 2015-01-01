@@ -45,7 +45,6 @@ Plugin 'scrooloose/syntastic'       " syntax checking plugin
 
 call vundle#end()                    " required
 filetype plugin indent on            " required
-set omnifunc=syntaxcomplete#Complete " omnicompletion enabled
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -68,6 +67,8 @@ let mapleader=","
 set updatetime=750
 
 syntax on
+set omnifunc=syntaxcomplete#Complete " omnicompletion enabled
+
 
 "set tags=./tags;/       " work up the tree towards root until 'tags' is found
 "set vbs=1               " increase verbosity of vim. to show log :messages
@@ -114,7 +115,7 @@ set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
 set colorcolumn=80      " set column at 80 character
 autocmd bufreadpre *.tex setlocal textwidth=80 " new line at 80 char
-set lazyredraw          " redraw only when we need to.
+"set lazyredraw          " redraw only when we need to.
 set backspace=2         " make backspace work like most other apps
 
 "set foldenable          " enable folding
@@ -139,11 +140,11 @@ set spell
 
 """ Statusline
 if has('statusline')
-      set laststatus=2
-      set noruler
-      " Broken down into easily includeable segments
-      "set statusline=%<%f\    " Filename
-      "set statusline+=%w%h%m%r " Options
+    set laststatus=2
+    set noruler
+    " Broken down into easily includeable segments
+    "set statusline=%<%f\    " Filename
+    "set statusline+=%w%h%m%r " Options
 
     set statusline+=%{fugitive#statusline()} "  Git branch on statusline
       "set statusline+=\ [%{&ff}/%Y]            " filetype
@@ -165,6 +166,9 @@ autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<c
 " Plugin config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""" Eclim
+"let g:EclimCompletionMethod = 'omnifunc'
+
 """ Jedi
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#use_splits_not_buffers = "right"
@@ -182,7 +186,7 @@ let g:syntastic_auto_jump=1
 
 
 """ SuperTab
-let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+let g:SuperTabDefaultCompletionType = "context" 
 
 """ CtrlP
 let g:ctrlp_map = '<c-p>'
