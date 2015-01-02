@@ -242,6 +242,17 @@ let g:airline#extensions#tabline#enabled = 1
 
 nnoremap Y y$
 
+" C compile and run
+map <F5> :w<CR>:!gcc % -o %< && ./%<<CR>
+
+
+" automatic closing parenthesis
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
+
 " to move faster across splits
 map <c-j> <c-w>j
 map <c-k> <c-w>k
