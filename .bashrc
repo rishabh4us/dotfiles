@@ -124,3 +124,5 @@ PS1=$PS1'\n\$ '
 
 VISUAL=vim
 EDITOR="$VISUAL"
+PROMPT_DIRTRIM=3    # trims the prompt to 3 directories
+
