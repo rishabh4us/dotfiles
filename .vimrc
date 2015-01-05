@@ -15,12 +15,11 @@ Plugin 'gmarik/Vundle.vim'          " let Vundle manage Vundle, required
 Plugin 'xolox/vim-misc'             " necessary for xolox plugins
 "Plugin 'xolox/vim-easytags'         " keep your tags files up-to-date. Uses exuberant ctags 
 "Plugin 'godlygeek/tabular'         " need to give this a try
-Plugin 'majutsushi/tagbar'          " provides an easy way to browse the tags of the current file
+"Plugin 'majutsushi/tagbar'          " provides an easy way to browse the tags of the current file
 Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert completion needs
 Plugin 'vim-scripts/Gundo'          " visualize the Vim undo tree
 Plugin 'terryma/vim-multiple-cursors' " Sublime Text's awesome multiple selection feature into Vim
 Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
-"Plugin 'klen/python-mode'           " pylint, rope, pydoc, pyflakes, pep8, and mccabe  
 Plugin 'alfredodeza/pytest.vim'     " way of running py.test from within VIM
 Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
 Plugin 'tpope/vim-fugitive'         " git wrapper
@@ -68,6 +67,7 @@ set updatetime=750
 
 syntax on
 set omnifunc=syntaxcomplete#Complete " omnicompletion enabled
+set completeopt=menu,preview,longest,menuone
 
 
 "set tags=./tags;/       " work up the tree towards root until 'tags' is found
@@ -245,7 +245,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 nnoremap Y y$
 
 " C compile and run
-map <F5> :w<CR>:!gcc % -o %< && ./%<<CR>
+noremap <F5> :w<CR>:!gcc % -o %< && ./%<<CR>
+" Java Eclim compile and run
+autocmd Filetype java noremap <F5> :Java<CR>
 
 
 " automatic closing parenthesis
@@ -296,7 +298,7 @@ nmap <silent><Leader>f <Esc>:Pytest function verbose<CR>
 nnoremap <unique> <Leader>u :GundoToggle<CR>
 
 """ TagBar 
-map <unique> <F1> :TagbarToggle<CR>
+"map <unique> <F1> :TagbarToggle<CR>
 
 """ Easymotion 
 " Replace the default search with easymotion
