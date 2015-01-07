@@ -270,6 +270,11 @@ noremap <leader>0 :b10<CR>
 nmap [l :lprevious<CR>
 nmap ]l :lnext<CR>
 
+
+" search and replace word under cursor mapping
+nnoremap <Leader>s :%s/<C-r><C-w>/
+
+
 """""""""""""""""
 " Plugin Mappings
 
