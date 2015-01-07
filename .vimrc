@@ -12,7 +12,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'          " let Vundle manage Vundle, required
 
 """ UTILS
-Plugin 'xolox/vim-misc'             " necessary for xolox plugins
+"Plugin 'xolox/vim-misc'             " necessary for xolox plugins
 "Plugin 'xolox/vim-easytags'         " keep your tags files up-to-date. Uses exuberant ctags 
 "Plugin 'godlygeek/tabular'         " need to give this a try
 "Plugin 'majutsushi/tagbar'          " provides an easy way to browse the tags of the current file
