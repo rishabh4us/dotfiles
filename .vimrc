@@ -304,6 +304,7 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 " jump to any word 
 nmap <unique> <space> <Plug>(easymotion-bd-w)
+let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
 
 
 """ CamelCaseMotion
