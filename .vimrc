@@ -236,7 +236,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 nnoremap Y y$
 
 " C compile and run
-noremap <F5> :w<CR>:!gcc % -o %< && ./%<<CR>
+autocmd Filetype c noremap <F5> :w<CR>:!gcc % -o %< && ./%<<CR>
 " Java Eclim compile and run
 autocmd Filetype java noremap <F5> :Java<CR>
 
