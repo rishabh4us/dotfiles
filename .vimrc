@@ -36,7 +36,6 @@ Plugin 'airblade/vim-gitgutter'     " shows a git diff in the 'gutter' (sign col
 Plugin 'kshenoy/vim-signature'      " plugin to place, toggle and display marks
 Plugin 'sjl/badwolf'                " awesome colorscheme
 Plugin 'terryma/vim-smooth-scroll'  " Vim smooth scrool. Scroll is configurable
-"Plugin 'Lokaltog/vim-powerline'     " enhanced statusline 
 Plugin 'bling/vim-airline'          " best statusline, shows also buffers to the top
 
 """ SYNTAX 
@@ -137,16 +136,15 @@ set spell
 
 
 
-
 """ Statusline
 if has('statusline')
+    "set noruler
     set laststatus=2
-    set noruler
     " Broken down into easily includeable segments
     "set statusline=%<%f\    " Filename
     "set statusline+=%w%h%m%r " Options
 
-    set statusline+=%{fugitive#statusline()} "  Git branch on statusline
+    "set statusline+=%{fugitive#statusline()} "  Git branch on statusline
       "set statusline+=\ [%{&ff}/%Y]            " filetype
       "set statusline+=\ [%{getcwd()}]          " current dir
       "set statusline+=%#warningmsg#
@@ -217,6 +215,8 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 1)<CR>
 """ Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_section_y = ''    " hides file encoding information
+let g:airline_section_x = ''    " hides filetype information
 
 
 
