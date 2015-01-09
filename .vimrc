@@ -13,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'          " let Vundle manage Vundle, required
 
 """ UTILS
 "Plugin 'xolox/vim-misc'             " necessary for xolox plugins
-"Plugin 'xolox/vim-easytags'         " keep your tags files up-to-date. Uses exuberant ctags 
+"Plugin 'xolox/vim-easytags'         " keep your tags files up-to-date. Uses exuberant ctags
 "Plugin 'godlygeek/tabular'         " need to give this a try
 "Plugin 'majutsushi/tagbar'          " provides an easy way to browse the tags of the current file
 Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert completion needs
@@ -25,9 +25,9 @@ Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
 Plugin 'tpope/vim-fugitive'         " git wrapper
 Plugin 'rking/ag.vim'               " text search into files
 
-""" MOTION 
+""" MOTION
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
-Plugin 'Lokaltog/vim-easymotion'    " jump anywhere quickly 
+Plugin 'Lokaltog/vim-easymotion'    " jump anywhere quickly
 Plugin 'bkad/CamelCaseMotion'       " transform the concept of a word to use CamelMotion and '_'
 
 """ APPEARANCE 
@@ -97,7 +97,7 @@ set expandtab           " tabs are spaces
 
 """ Search 
 set incsearch           " search as characters are entered
-set hlsearch            " highlight matches
+"set hlsearch            " highlight matches
 set ignorecase          " ignore case while searching
 
 " highlight word under cursor 
@@ -191,10 +191,12 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 1)<CR>
 
 
 """ Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_section_y = ''    " hides file encoding information
-let g:airline_section_x = ''    " hides filetype information
+let g:airline#extensions#tabline#enabled = 1            " tabline to the top
+let g:airline#extensions#tabline#buffer_nr_show = 1     " showing buf number
+let g:airline#extensions#eclim#enabled = 1              " eclimd integration 
+let g:airline#extensions#whitespace#enabled = 0         " whitespace errors
+let g:airline_section_y = ''       " hides file encoding information
+let g:airline_section_x = ''       " hides filetype information
 
 
 
@@ -270,10 +272,10 @@ nnoremap <unique> <Leader>u :GundoToggle<CR>
 
 """ Easymotion 
 " Replace the default search with easymotion
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
+"map  n <Plug>(easymotion-next)
+"map  N <Plug>(easymotion-prev)
 " jump to any word 
 nmap <unique> <space> <Plug>(easymotion-bd-w)
 let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
