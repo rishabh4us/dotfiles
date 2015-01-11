@@ -122,7 +122,7 @@ fi
 # prompt always on a new line
 PS1=$PS1'\n\$ '
 
-VISUAL=vim
-EDITOR="$VISUAL"
+export VISUAL=vim
+export EDITOR="$VISUAL"
 PROMPT_DIRTRIM=3    # trims the prompt to 3 directories
 
