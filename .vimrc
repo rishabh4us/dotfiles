@@ -75,6 +75,7 @@ set completeopt=menu,preview,longest,menuone
 
 "set mouse=a             " mouse integration
 set backspace=2          " make backspace work like most other apps
+set pastetoggle=<F2>
 
 
 set wildignore+=*.DS_Store                      " OSX bullshit
@@ -212,6 +213,7 @@ nnoremap Y y$
 autocmd Filetype c noremap <F5> :w<CR>:!gcc % -o %< && ./%<<CR>
 " Java Eclim compile and run
 autocmd Filetype java noremap <F5> :Java<CR>
+autocmd Filetype python noremap <F5> :!python %<CR>
 
 
 " automatic closing parenthesis
