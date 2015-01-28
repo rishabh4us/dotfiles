@@ -217,7 +217,7 @@ nnoremap Y y$
 autocmd Filetype c noremap <F5> :w<CR>:!gcc % -o %< && ./%<<CR>
 " Java Eclim compile and run
 autocmd Filetype java noremap <F5> :Java<CR>
-autocmd Filetype python noremap <F5> :!python %<CR>
+autocmd Filetype python noremap <F5> :w<CR>:!python %<CR>
 
 
 " automatic closing parenthesis
