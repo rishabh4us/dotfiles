@@ -24,6 +24,7 @@ Plugin 'alfredodeza/pytest.vim'     " way of running py.test from within VIM
 Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
 Plugin 'tpope/vim-fugitive'         " git wrapper
 Plugin 'rking/ag.vim'               " text search into files
+Plugin 'SirVer/ultisnips'           " snippets for vim
 
 """ MOTION
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -189,6 +190,9 @@ let g:ctrlp_custom_ignore = {
 """ Smooth-scroll
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 1)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 1)<CR>
+
+map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 
 
 """ Airline
