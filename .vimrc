@@ -24,6 +24,7 @@ Plugin 'alfredodeza/pytest.vim'     " way of running py.test from within VIM
 Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
 Plugin 'tpope/vim-fugitive'         " git wrapper
 Plugin 'rking/ag.vim'               " text search into files
+Plugin 'honza/vim-snippets'         " default snippets
 Plugin 'SirVer/ultisnips'           " snippets for vim
 
 """ MOTION
@@ -115,6 +116,7 @@ set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
 set colorcolumn=80      " set column at 80 character
 autocmd bufreadpre *.tex setlocal textwidth=80 " new line at 80 char for .tex files
+autocmd BufReadPost *.mak set syntax=html
 "set lazyredraw          " redraw only when we need to.
 
 
@@ -146,7 +148,7 @@ set spell
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin config
+" Plugin configurations settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """ Eclim
@@ -202,6 +204,10 @@ let g:airline#extensions#eclim#enabled = 1              " eclimd integration
 let g:airline#extensions#whitespace#enabled = 0         " whitespace errors
 let g:airline_section_y = ''       " hides file encoding information
 let g:airline_section_x = ''       " hides filetype information
+
+
+""" UltiSnips
+let g:UltiSnipsExpandTrigger = '<C-j>'
 
 
 
