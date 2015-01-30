@@ -42,6 +42,7 @@ Plugin 'bling/vim-airline'          " best statusline, shows also buffers to the
 
 """ SYNTAX 
 Plugin 'scrooloose/syntastic'       " syntax checking plugin
+Plugin 'gregsexton/MatchTag'        " highlight matching tag in html
 
 call vundle#end()                    " required
 "
@@ -117,6 +118,7 @@ set showmatch           " highlight matching [{()}]
 set colorcolumn=80      " set column at 80 character
 autocmd bufreadpre *.tex setlocal textwidth=80 " new line at 80 char for .tex files
 autocmd BufReadPost *.mak set syntax=html
+autocmd BufReadPost *.mak set filetype=html
 "set lazyredraw          " redraw only when we need to.
 
 
@@ -144,7 +146,7 @@ colorscheme badwolf
 set spell 
 "hi SpellBad ctermbg=196  " background color for bad spelled words
 "autocmd ColorScheme * :hi SpellBad ctermbg=196  " background color for bad spelled words
-
+source $VIMRUNTIME/macros/matchit.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
