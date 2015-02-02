@@ -217,6 +217,9 @@ let g:UltiSnipsExpandTrigger = '<C-j>'
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Use S to replace current word or selected text
+nnoremap S diw"0P
+vnoremap S "_d"0P
 
 " Y behaves like D, C 
 nnoremap Y y$           
