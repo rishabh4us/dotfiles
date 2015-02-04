@@ -264,7 +264,7 @@ nmap ]l :lnext<CR>
 
 
 " search and replace word under cursor
-nnoremap <Leader>s :%s/<C-r><C-w>/
+nnoremap <Leader>s :%s/<C-r><C-w>//g<Left><Left>
 
 
 """""""""""""""""
