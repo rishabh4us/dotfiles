@@ -164,6 +164,7 @@ let g:jedi#use_splits_not_buffers = "right"
 """ Syntastic
 let g:syntastic_python_checkers=['pep8']
 let g:syntastic_python_pep8_args='--ignore=E501'
+let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_jump=1
 
