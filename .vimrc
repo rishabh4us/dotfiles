@@ -113,6 +113,7 @@ set number              " show line numbers
 set relativenumber
 setglobal relativenumber " show relative line numbers
 set cursorline          " highlight current line
+set wildmode=longest,list,full
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
 set colorcolumn=80      " set column at 80 character
