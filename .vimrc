@@ -234,10 +234,7 @@ autocmd Filetype python noremap <F5> :w<CR>:!python %<CR>
 
 
 " automatic closing parenthesis
-inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
 
 
 " to move faster across splits
