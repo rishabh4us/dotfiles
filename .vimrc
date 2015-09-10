@@ -105,7 +105,7 @@ set incsearch           " search as characters are entered
 set ignorecase          " ignore case while searching
 
 " highlight word under cursor 
-autocmd CursorMoved * exe printf('match SignColumn /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+autocmd CursorMoved * exe printf('match CtrlParrow1 /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 """ Appearance
 set title               " show filepath in the terminal title
@@ -313,6 +313,7 @@ sunmap e
 "xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 """ Ag.vim
+nnoremap <C-\> :Ag <C-r><C-w><CR>
 nnoremap \ :Ag<SPACE>
 "nnoremap 8 :AgFromSearch<CR>
 
