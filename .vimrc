@@ -113,6 +113,7 @@ set number              " show line numbers
 set relativenumber
 setglobal relativenumber " show relative line numbers
 set cursorline          " highlight current line
+set wildmode=longest,list,full
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
 set colorcolumn=80      " set column at 80 character
@@ -164,6 +165,7 @@ let g:jedi#use_splits_not_buffers = "right"
 """ Syntastic
 let g:syntastic_python_checkers=['pep8']
 let g:syntastic_python_pep8_args='--ignore=E501'
+let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_jump=1
 
@@ -311,6 +313,7 @@ sunmap e
 "xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 """ Ag.vim
+nnoremap <C-\> :Ag <C-r><C-w><CR>
 nnoremap \ :Ag<SPACE>
 "nnoremap 8 :AgFromSearch<CR>
 
