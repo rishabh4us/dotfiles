@@ -105,7 +105,7 @@ set incsearch           " search as characters are entered
 set ignorecase          " ignore case while searching
 
 " highlight word under cursor 
-autocmd CursorMoved * exe printf('match SignColumn /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+autocmd CursorMoved * exe printf('match Visual /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 """ Appearance
 set title               " show filepath in the terminal title
@@ -232,10 +232,7 @@ autocmd Filetype python noremap <F5> :w<CR>:!python %<CR>
 
 
 " automatic closing parenthesis
-inoremap {      {}<Left>
 inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
 
 
 " to move faster across splits
