@@ -37,7 +37,7 @@ Plugin 'scrooloose/nerdcommenter'   " comments lines out
 Plugin 'airblade/vim-gitgutter'     " shows a git diff in the 'gutter' (sign column)
 Plugin 'kshenoy/vim-signature'      " plugin to place, toggle and display marks
 Plugin 'sjl/badwolf'                " awesome colorscheme
-Plugin 'terryma/vim-smooth-scroll'  " Vim smooth scrool. Scroll is configurable
+"Plugin 'terryma/vim-smooth-scroll'  " Vim smooth scrool. Scroll is configurable
 Plugin 'bling/vim-airline'          " best statusline, shows also buffers to the top
 
 """ SYNTAX 
@@ -106,6 +106,7 @@ set ignorecase          " ignore case while searching
 
 " highlight word under cursor 
 autocmd CursorMoved * exe printf('match Visual /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+" try CntrlParrow1 instead of Visual above
 
 """ Appearance
 set title               " show filepath in the terminal title
@@ -194,11 +195,11 @@ let g:ctrlp_custom_ignore = {
 
 
 """ Smooth-scroll
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 1)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 1)<CR>
+"noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 1)<CR>
+"noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 1)<CR>
 
-map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
-map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+"map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+"map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 
 
 """ Airline
