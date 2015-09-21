@@ -105,7 +105,8 @@ set incsearch           " search as characters are entered
 set ignorecase          " ignore case while searching
 
 " highlight word under cursor 
-autocmd CursorMoved * exe printf('match CtrlParrow1 /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+autocmd CursorMoved * exe printf('match Visual /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+" try CntrlParrow1 instead of Visual above
 
 """ Appearance
 set title               " show filepath in the terminal title
