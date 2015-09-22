@@ -216,11 +216,17 @@ let g:airline_section_x = ''       " hides filetype information
 """ UltiSnips
 let g:UltiSnipsExpandTrigger = '<C-j>'
 
+""" Fugitive
+set diffopt+=vertical   " always split vertical
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Navigate between buffers like chrome tabs
+"nnoremap <C-tab> :bn
+"nnoremap <C-S-tab> :bp
 
 " Use S to replace current word or selected text
 nnoremap S diw"0P
