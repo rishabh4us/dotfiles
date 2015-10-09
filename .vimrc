@@ -12,7 +12,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'          " let Vundle manage Vundle, required
 
 """ UTILS
-"Plugin 'xolox/vim-misc'             " necessary for xolox plugins
 "Plugin 'xolox/vim-easytags'         " keep your tags files up-to-date. Uses exuberant ctags
 "Plugin 'godlygeek/tabular'         " need to give this a try
 "Plugin 'majutsushi/tagbar'          " provides an easy way to browse the tags of the current file
@@ -39,6 +38,7 @@ Plugin 'kshenoy/vim-signature'      " plugin to place, toggle and display marks
 Plugin 'sjl/badwolf'                " awesome colorscheme
 "Plugin 'terryma/vim-smooth-scroll'  " Vim smooth scrool. Scroll is configurable
 Plugin 'bling/vim-airline'          " best statusline, shows also buffers to the top
+"Plugin 'hynek/vim-python-pep8-indent' " indent python files according to pep8
 
 """ SYNTAX 
 Plugin 'scrooloose/syntastic'       " syntax checking plugin
@@ -80,7 +80,6 @@ set completeopt=menu,preview,longest,menuone
 set backspace=2          " make backspace work like most other apps
 set pastetoggle=<F2>
 
-
 set wildignore+=*.DS_Store                      " OSX bullshit
 set wildignore+=.hg,.git,.svn                   " Version control
 set wildignore+=*.sw?,*.un?                     " vim
@@ -92,12 +91,18 @@ set wildignore+=*.aux,*.out,*.toc               " LaTeX
 set wildignore+=.tox,*.pyc,*.pyo                " Python
 set wildignore+=*/tmp/**,*.zip                  " misc
 
+""" Folds
+autocmd syntax python setlocal foldmethod=indent
+set foldlevelstart=20
 
-""" Tabs 
+""" Tabs for Python
 set shiftwidth=4 
 set tabstop=4           " number of visual spaces per TAB
 set softtabstop=4       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
+"set autoindent
+"set smartindent
+"set smarttab
 
 """ Search 
 set incsearch           " search as characters are entered
@@ -161,6 +166,7 @@ source $VIMRUNTIME/macros/matchit.vim
 """ Jedi
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#use_splits_not_buffers = "right"
+let g:jedi#popup_select_first = 1
 
 
 """ Syntastic
@@ -215,6 +221,7 @@ let g:airline_section_x = ''       " hides filetype information
 
 """ UltiSnips
 let g:UltiSnipsExpandTrigger = '<C-j>'
+let g:UltiSnipsListSnippets = '<C-l>'
 
 """ Fugitive
 set diffopt+=vertical   " always split vertical
@@ -224,13 +231,18 @@ set diffopt+=vertical   " always split vertical
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Navigate between buffers like chrome tabs
-"nnoremap <C-tab> :bn
-"nnoremap <C-S-tab> :bp
+" Navigate between buffers
+nnoremap <C-right> :bn<CR>
+nnoremap <C-left> :bp<CR>
 
 " Use S to replace current word or selected text
-nnoremap S diw"0P
-vnoremap S "_d"0P
+nnoremap S "_diwP
+"nnoremap S diw"0p
+"vnoremap S "_d"0p
+"nnoremap S viw"0p
+
+" allows to paste the same text multiple times. gvy reyanks last selection
+"xnoremap p pgvy
 
 " Y behaves like D, C 
 nnoremap Y y$           
