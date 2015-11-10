@@ -35,7 +35,7 @@ Plugin 'bkad/CamelCaseMotion'       " transform the concept of a word to use Cam
 Plugin 'scrooloose/nerdcommenter'   " comments lines out
 Plugin 'airblade/vim-gitgutter'     " shows a git diff in the 'gutter' (sign column)
 Plugin 'kshenoy/vim-signature'      " plugin to place, toggle and display marks
-Plugin 'sjl/badwolf'                " awesome colorscheme
+Plugin 'flazz/vim-colorschemes'     " colorschemes
 "Plugin 'terryma/vim-smooth-scroll'  " Vim smooth scrool. Scroll is configurable
 Plugin 'bling/vim-airline'          " best statusline, shows also buffers to the top
 "Plugin 'hynek/vim-python-pep8-indent' " indent python files according to pep8
@@ -71,7 +71,7 @@ filetype plugin indent on
 
 """ Vim omnicompletion 
 set omnifunc=syntaxcomplete#Complete " omnicompletion enabled
-set completeopt=menu,preview,longest,menuone
+set completeopt=menu " setting also preview makes the menu flickering
 
 "set tags=./tags;/       " work up the tree towards root until 'tags' is found
 "set vbs=1               " increase verbosity of vim. to show log :messages
@@ -119,6 +119,7 @@ set number              " show line numbers
 set relativenumber
 setglobal relativenumber " show relative line numbers
 set cursorline          " highlight current line
+set cursorcolumn        " highlight current column
 set wildmode=longest,list,full
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
@@ -126,6 +127,8 @@ set colorcolumn=80      " set column at 80 character
 autocmd bufreadpre *.tex setlocal textwidth=80 " new line at 80 char for .tex files
 autocmd BufReadPost *.mak set syntax=html
 autocmd BufReadPost *.mak set filetype=html
+autocmd BufReadPost *.cql set syntax=sql
+autocmd BufReadPost *.cql set filetype=sql
 "set lazyredraw          " redraw only when we need to.
 
 
@@ -147,13 +150,33 @@ set laststatus=2            " statusline always on
 "set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
 
-set t_Co=256            " set terminal to 256 colours to use badwolf
-colorscheme badwolf
+set t_Co=256            " set terminal to 256 colours to use colorschemes (badwolf)
+"colorscheme badwolf     " awesome colorscheme
+"colorscheme mustang
+"colorscheme molokai     " heavy ? 
+"colorscheme github
+colorscheme jellybeans
+colorscheme molokai
 
-set spell 
+"let g:jellybeans_overrides = {
+    "'SpellBad': { '
+"}
+
+" Sets a different colorscheme if vimdiff is called from the terminal
+if &diff
+    colorscheme jellybeans
+endif
+
+" Sets a different colorscheme if vimdiff is called from inside vim.
+" How it works: FilterWritePre is called before filtering through an external 
+" program (the diff utility) and the &diff-option is set by vim when it's 
+" going into diff-mode 
+au FilterWritePre * if &diff | colorscheme jellybeans | endif
+
+"set spell 
 "hi SpellBad ctermbg=196  " background color for bad spelled words
 "autocmd ColorScheme * :hi SpellBad ctermbg=196  " background color for bad spelled words
-source $VIMRUNTIME/macros/matchit.vim
+source $VIMRUNTIME/macros/matchit.vim " jump between pair of contructs (i.e. tags, brackets)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -222,6 +245,7 @@ let g:airline_section_x = ''       " hides filetype information
 """ UltiSnips
 let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsListSnippets = '<C-l>'
+let g:ultisnips_python_style = 'google'
 
 """ Fugitive
 set diffopt+=vertical   " always split vertical
@@ -336,5 +360,3 @@ sunmap e
 """ Ag.vim
 nnoremap <C-\> :Ag <C-r><C-w><CR>
 nnoremap \ :Ag<SPACE>
-"nnoremap 8 :AgFromSearch<CR>
-
