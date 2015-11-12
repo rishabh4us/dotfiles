@@ -155,7 +155,7 @@ set t_Co=256            " set terminal to 256 colours to use colorschemes (badwo
 "colorscheme mustang
 "colorscheme molokai     " heavy ? 
 "colorscheme github
-colorscheme jellybeans
+"colorscheme jellybeans
 colorscheme molokai
 
 "let g:jellybeans_overrides = {
