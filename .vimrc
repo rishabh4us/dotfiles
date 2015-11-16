@@ -12,9 +12,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'          " let Vundle manage Vundle, required
 
 """ UTILS
-"Plugin 'xolox/vim-easytags'         " keep your tags files up-to-date. Uses exuberant ctags
-"Plugin 'godlygeek/tabular'         " need to give this a try
-"Plugin 'majutsushi/tagbar'          " provides an easy way to browse the tags of the current file
 Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert completion needs
 Plugin 'vim-scripts/Gundo'          " visualize the Vim undo tree
 Plugin 'terryma/vim-multiple-cursors' " Sublime Text's awesome multiple selection feature into Vim
@@ -36,7 +33,6 @@ Plugin 'scrooloose/nerdcommenter'   " comments lines out
 Plugin 'airblade/vim-gitgutter'     " shows a git diff in the 'gutter' (sign column)
 Plugin 'kshenoy/vim-signature'      " plugin to place, toggle and display marks
 Plugin 'flazz/vim-colorschemes'     " colorschemes
-"Plugin 'terryma/vim-smooth-scroll'  " Vim smooth scrool. Scroll is configurable
 Plugin 'bling/vim-airline'          " best statusline, shows also buffers to the top
 "Plugin 'hynek/vim-python-pep8-indent' " indent python files according to pep8
 
@@ -45,12 +41,6 @@ Plugin 'scrooloose/syntastic'       " syntax checking plugin
 Plugin 'gregsexton/MatchTag'        " highlight matching tag in html
 
 call vundle#end()                    " required
-"
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
 
 
 let mapleader=","
