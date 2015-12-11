@@ -32,9 +32,9 @@ Plugin 'bkad/CamelCaseMotion'       " transform the concept of a word to use Cam
 Plugin 'scrooloose/nerdcommenter'   " comments lines out
 Plugin 'airblade/vim-gitgutter'     " shows a git diff in the 'gutter' (sign column)
 Plugin 'kshenoy/vim-signature'      " plugin to place, toggle and display marks
-Plugin 'flazz/vim-colorschemes'     " colorschemes
 Plugin 'bling/vim-airline'          " best statusline, shows also buffers to the top
 "Plugin 'hynek/vim-python-pep8-indent' " indent python files according to pep8
+Plugin 'flazz/vim-colorschemes'     " various colorschemes
 
 """ SYNTAX 
 Plugin 'scrooloose/syntastic'       " syntax checking plugin
@@ -143,25 +143,16 @@ set laststatus=2            " statusline always on
 set t_Co=256            " set terminal to 256 colours to use colorschemes (badwolf)
 "colorscheme badwolf     " awesome colorscheme
 "colorscheme mustang
-"colorscheme molokai     " heavy ? 
 "colorscheme github
-"colorscheme jellybeans
-colorscheme molokai
+colorscheme jellybeans
+"colorscheme molokai     " heavy ? 
+"set background=dark
 
 "let g:jellybeans_overrides = {
     "'SpellBad': { '
 "}
 
-" Sets a different colorscheme if vimdiff is called from the terminal
-if &diff
-    colorscheme jellybeans
-endif
 
-" Sets a different colorscheme if vimdiff is called from inside vim.
-" How it works: FilterWritePre is called before filtering through an external 
-" program (the diff utility) and the &diff-option is set by vim when it's 
-" going into diff-mode 
-au FilterWritePre * if &diff | colorscheme jellybeans | endif
 
 "set spell 
 "hi SpellBad ctermbg=196  " background color for bad spelled words
