@@ -125,20 +125,6 @@ autocmd BufReadPost *.cql set filetype=sql
 """ Statusline
 set laststatus=2            " statusline always on
 
-""" The followings do not apply if you have Airline
-"set noruler
-" Broken down into easily includeable segments
-"set statusline=%<%f\    " Filename
-"set statusline+=%w%h%m%r " Options
-"set statusline+=%{fugitive#statusline()} "  Git branch on statusline
-"set statusline+=\ [%{&ff}/%Y]            " filetype
-"set statusline+=\ [%{getcwd()}]          " current dir
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_enable_signs=1
-"set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-
 
 set t_Co=256            " set terminal to 256 colours to use colorschemes (badwolf)
 "colorscheme badwolf     " awesome colorscheme
@@ -147,11 +133,6 @@ set t_Co=256            " set terminal to 256 colours to use colorschemes (badwo
 colorscheme jellybeans
 "colorscheme molokai     " heavy ? 
 "set background=dark
-
-"let g:jellybeans_overrides = {
-    "'SpellBad': { '
-"}
-
 
 
 "set spell 
@@ -241,7 +222,7 @@ nnoremap <C-right> :bn<CR>
 nnoremap <C-left> :bp<CR>
 
 " Use S to replace current word or selected text
-nnoremap S "_diwP
+nnoremap S viwpyiw
 "nnoremap S diw"0p
 "vnoremap S "_d"0p
 "nnoremap S viw"0p
@@ -307,7 +288,7 @@ nmap <silent><Leader>m <Esc>:Pytest method verbose<CR>
 nmap <silent><Leader>f <Esc>:Pytest function verbose<CR>
 
 """ Gundo
-nnoremap <unique> <Leader>u :GundoToggle<CR>
+nnoremap <Leader>u :GundoToggle<CR>
 
 """ TagBar 
 "map <unique> <F1> :TagbarToggle<CR>
@@ -319,7 +300,7 @@ nnoremap <unique> <Leader>u :GundoToggle<CR>
 "map  n <Plug>(easymotion-next)
 "map  N <Plug>(easymotion-prev)
 " jump to any word 
-nmap <unique> <space> <Plug>(easymotion-bd-w)
+nmap <space> <Plug>(easymotion-bd-w)
 let g:EasyMotion_keys = 'asdghklqwertyuiopzxcvbnmfj'
 
 
