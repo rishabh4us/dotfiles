@@ -22,6 +22,7 @@ Plugin 'tpope/vim-fugitive'         " git wrapper
 Plugin 'rking/ag.vim'               " text search into files
 Plugin 'honza/vim-snippets'         " default snippets
 Plugin 'SirVer/ultisnips'           " snippets for vim
+Plugin 'dhruvasagar/vim-table-mode' " table markdown
 
 """ MOTION
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
