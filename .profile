@@ -20,3 +20,6 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# makes steam minimized to system tray when closing the window
+export STEAM_FRAME_FORCE_CLOSE=1
