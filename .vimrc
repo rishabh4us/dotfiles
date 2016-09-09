@@ -208,7 +208,7 @@ let g:airline_section_x = ''       " hides filetype information
 """ UltiSnips
 let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsListSnippets = '<C-l>'
-let g:ultisnips_python_style = 'google'
+let g:ultisnips_python_style = 'sphinx'
 
 """ Fugitive
 set diffopt+=vertical   " always split vertical
