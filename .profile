@@ -22,7 +22,7 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 if [ -f "$HOME/.utils.bash" ]; then
-    source $HOME/.utils.bash
+    source "$HOME/.utils.bash"
 fi
 
 # makes steam minimized to system tray when closing the window
