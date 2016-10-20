@@ -126,3 +126,13 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 PROMPT_DIRTRIM=3    # trims the prompt to 3 directories
 
+## ALIASES ##
+alias ccat='pygmentize -O style=monokai -f console256 -g'
+alias vim_staged="vim \$(git diff --name-only)"
+
+
+function vim_diff_from {
+    diff_param=$1
+
+    vim $(git diff $diff_param --name-only)
+}
