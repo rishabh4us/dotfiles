@@ -8,14 +8,20 @@ GREEN_COLOUR='\033[0;32m'
 NO_COLOUR='\033[0m'
 
 function log() {
-    stdfile=1
-    COLOUR=$GREEN_COLOUR
-    if [[ $1 = ERROR ]];
+
+    stdfile=
+    COLOUR=
+
+    if [[ $1 = INFO ]]
     then
-        COLOUR=$RED_COLOUR
+        COLOUR=$GREEN_COLOUR
+        stdfile=1
+    elif [[ $1 = ERROR ]]
+    then
         stdfile=2
+        COLOUR=$RED_COLOUR
     fi
 
     # redirecting string on stderr or stdout
-    printf "${COLOUR}[$1] ### $2 ${NO_COLOUR}\n" >&$stdfile 
+    printf "${COLOUR}[ $(date +%Y-%m-%dT%H:%M:%S%z) ] $1: $2 ${NO_COLOUR}\n" >&$stdfile 
 }
