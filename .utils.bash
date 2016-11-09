@@ -25,3 +25,8 @@ function log() {
     # redirecting string on stderr or stdout
     printf "${COLOUR}[ $(date +%Y-%m-%dT%H:%M:%S%z) ] $1: $2 ${NO_COLOUR}\n" >&$stdfile 
 }
+
+function abort() {
+    log ERROR "$1"
+    exit 1
+}
