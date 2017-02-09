@@ -16,8 +16,11 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin directories
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# set PATH to include user's private bin directories
+PATH="$HOME/local/bin:$HOME/.local/bin:$PATH"
+
+# set MANPATH to include user's private manpath directories
+MANPATH="$HOME/local/share/man:$MANPATH"
 
 if [ -f "$HOME/.utils.bash" ]; then
     source "$HOME/.utils.bash"
