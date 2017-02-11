@@ -53,8 +53,6 @@ let mapleader=","
 " General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set updatetime=750
-
 syntax on
 filetype plugin indent on            
 " To ignore plugin indent changes, instead use:
@@ -107,24 +105,20 @@ autocmd CursorMoved * exe printf('match Visual /\V\<%s\>/', escape(expand('<cwor
 """ Appearance
 set title               " show filepath in the terminal title
 set number              " show line numbers
-"set relativenumber
-"setglobal relativenumber " show relative line numbers
-"set cursorline          " highlight current line
-"set cursorcolumn        " highlight current column
+set relativenumber
+setglobal relativenumber " show relative line numbers
+set cursorline          " highlight current line
+set cursorcolumn        " highlight current column
 set wildmode=longest,list,full
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
-"set colorcolumn=80      " set column at 80 character
+set colorcolumn=80      " set column at 80 character
 autocmd bufreadpre *.tex setlocal textwidth=80 " new line at 80 char for .tex files
 autocmd BufReadPost *.mak set syntax=html
 autocmd BufReadPost *.mak set filetype=html
 autocmd BufReadPost *.cql set syntax=sql
 autocmd BufReadPost *.cql set filetype=sql
-set lazyredraw          " redraw only when we need to.
-
-"?
-set ttyfast
-set synmaxcol=200
+"set lazyredraw          " redraw only when we need to.
 
 
 """ Statusline
