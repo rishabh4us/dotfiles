@@ -23,6 +23,7 @@ Plugin 'rking/ag.vim'               " text search into files
 Plugin 'honza/vim-snippets'         " default snippets
 Plugin 'SirVer/ultisnips'           " snippets for vim
 Plugin 'dhruvasagar/vim-table-mode' " table markdown
+Plugin 'python-rope/ropevim'
 
 """ MOTION
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -313,3 +314,9 @@ sunmap e
 """ Ag.vim
 nnoremap <C-\> :Ag <C-r><C-w><CR>
 nnoremap \ :Ag<SPACE>
+
+
+" Neovim bug - C-h becomes <BS> (I want it to become <C-W>-h eventually
+ if has('nvim')
+     nmap <BS> <C-W>h
+ endif
