@@ -23,7 +23,8 @@ Plugin 'rking/ag.vim'               " text search into files
 Plugin 'honza/vim-snippets'         " default snippets
 Plugin 'SirVer/ultisnips'           " snippets for vim
 Plugin 'dhruvasagar/vim-table-mode' " table markdown
-Plugin 'python-rope/ropevim'
+"Plugin 'python-rope/ropevim'        " python refactorings
+Plugin 'rodjek/vim-puppet'          " Puppet syntax high. and auto-alignment
 
 """ MOTION
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -66,7 +67,7 @@ set completeopt=menu " setting also preview makes the menu flickering
 "set tags=./tags;/       " work up the tree towards root until 'tags' is found
 "set vbs=1               " increase verbosity of vim. to show log :messages
 
-"set mouse=a             " mouse integration
+set mouse=a             " mouse integration
 set backspace=2          " make backspace work like most other apps
 set pastetoggle=<F2>
 
