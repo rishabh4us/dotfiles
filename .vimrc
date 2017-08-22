@@ -321,3 +321,23 @@ nnoremap \ :Ag<SPACE>
  if has('nvim')
      nmap <BS> <C-W>h
  endif
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" My functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! FormatPythonSignatureVertically()
+
+    execute "normal 0f(a\r\b\ef,"
+    " Get current letter.
+    normal! yl
+    while @" =~ ','
+        execute "normal a\r\ef,"
+        normal! yl
+    endwhile
+    execute "normal f)i,\r\b\e"
+
+endfunction
+
+nnoremap <F1> :.call FormatPythonSignatureVertically()<CR>
