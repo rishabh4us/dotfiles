@@ -133,6 +133,7 @@ PROMPT_DIRTRIM=3    # trims the prompt to 3 directories
 ## ALIASES ##
 alias ccat='pygmentize -O style=monokai -f console256 -g'
 alias vim_staged="vim \$(git diff --name-only)"
+alias python='python3'
 
 
 function vim_diff_from {
