@@ -16,15 +16,18 @@ Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert complet
 Plugin 'vim-scripts/Gundo'          " visualize the Vim undo tree
 Plugin 'terryma/vim-multiple-cursors' " Sublime Text's awesome multiple selection feature into Vim
 Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
-Plugin 'alfredodeza/pytest.vim'     " way of running py.test from within VIM
-Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
 Plugin 'tpope/vim-fugitive'         " git wrapper
 Plugin 'rking/ag.vim'               " text search into files
 Plugin 'honza/vim-snippets'         " default snippets
 Plugin 'SirVer/ultisnips'           " snippets for vim
 Plugin 'dhruvasagar/vim-table-mode' " table markdown
-"Plugin 'python-rope/ropevim'        " python refactorings
+
+""" LANGUAGE-SPECIFIC
+Plugin 'derekwyatt/vim-scala'       " scala
 Plugin 'rodjek/vim-puppet'          " Puppet syntax high. and auto-alignment
+Plugin 'alfredodeza/pytest.vim'     " way of running py tests from within VIM
+Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
+"Plugin 'python-rope/ropevim'        " python refactorings
 
 """ MOTION
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -36,12 +39,12 @@ Plugin 'scrooloose/nerdcommenter'   " comments lines out
 Plugin 'airblade/vim-gitgutter'     " shows a git diff in the 'gutter' (sign column)
 Plugin 'kshenoy/vim-signature'      " plugin to place, toggle and display marks
 Plugin 'bling/vim-airline'          " best statusline, shows also buffers to the top
-"Plugin 'hynek/vim-python-pep8-indent' " indent python files according to pep8
 Plugin 'flazz/vim-colorschemes'     " various colorschemes
 
 """ SYNTAX 
 Plugin 'scrooloose/syntastic'       " syntax checking plugin
 Plugin 'gregsexton/MatchTag'        " highlight matching tag in html
+"Plugin 'hynek/vim-python-pep8-indent' " indent python files according to pep8
 
 call vundle#end()                    " required
 
@@ -322,7 +325,7 @@ nnoremap \ :Ag<SPACE>
      nmap <BS> <C-W>h
  endif
 
-
+ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
