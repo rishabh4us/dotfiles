@@ -141,3 +141,7 @@ function vim_diff_from {
 
     vim $(git diff $diff_param --name-only)
 }
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi

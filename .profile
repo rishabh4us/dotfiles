@@ -17,7 +17,7 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # set PATH to include user's private bin directories
-PATH="$HOME/local/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/local/bin:$HOME/.local/bin:/usr/local/sbin:$HOME/Library/Python/2.7/bin:$PATH"
 
 # set MANPATH to include user's private manpath directories
 MANPATH="$HOME/local/share/man:$MANPATH"
@@ -28,3 +28,5 @@ fi
 
 # makes steam minimized to system tray when closing the window
 export STEAM_FRAME_FORCE_CLOSE=1
+
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_162`
