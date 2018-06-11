@@ -24,10 +24,12 @@ Plugin 'dhruvasagar/vim-table-mode' " table markdown
 
 """ LANGUAGE-SPECIFIC
 Plugin 'derekwyatt/vim-scala'       " scala
+"Plugin 'ensime/ensime-vim'          " scala autocomplete
 Plugin 'rodjek/vim-puppet'          " Puppet syntax high. and auto-alignment
 Plugin 'alfredodeza/pytest.vim'     " way of running py tests from within VIM
 Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
 "Plugin 'python-rope/ropevim'        " python refactorings
+Plugin 'Rip-Rip/clang_complete'     " C++ autocomplete
 
 """ MOTION
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -167,6 +169,8 @@ let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_jump=1
 
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
 
 """ SuperTab
 let g:SuperTabDefaultCompletionType = "context" 
@@ -207,6 +211,9 @@ let g:ultisnips_python_style = 'sphinx'
 
 """ Fugitive
 set diffopt+=vertical   " always split vertical
+
+""" clang C++ autocomplete
+let g:clang_library_path='/usr/local/opt/llvm/lib'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -30,3 +30,7 @@ fi
 export STEAM_FRAME_FORCE_CLOSE=1
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_162`
+
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
