@@ -19,7 +19,7 @@ Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
 Plugin 'tpope/vim-fugitive'         " git wrapper
 Plugin 'rking/ag.vim'               " text search into files
 Plugin 'honza/vim-snippets'         " default snippets
-Plugin 'SirVer/ultisnips'           " snippets for vim
+"Plugin 'SirVer/ultisnips'           " snippets for vim
 Plugin 'dhruvasagar/vim-table-mode' " table markdown
 
 """ LANGUAGE-SPECIFIC
@@ -29,7 +29,7 @@ Plugin 'rodjek/vim-puppet'          " Puppet syntax high. and auto-alignment
 Plugin 'alfredodeza/pytest.vim'     " way of running py tests from within VIM
 Plugin 'davidhalter/jedi-vim'       " autocomplete for Python
 "Plugin 'python-rope/ropevim'        " python refactorings
-Plugin 'Rip-Rip/clang_complete'     " C++ autocomplete
+"Plugin 'Rip-Rip/clang_complete'     " C++ autocomplete
 
 """ MOTION
 Plugin 'tpope/vim-surround'         " provides mappings to manipulate surroundings in pairs
@@ -169,7 +169,7 @@ let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_jump=1
 
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+"let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
 
 """ SuperTab
@@ -240,7 +240,7 @@ nnoremap Y y$
 autocmd Filetype c noremap <F5> :w<CR>:!gcc % -o %< && ./%<<CR>
 " Java Eclim compile and run
 autocmd Filetype java noremap <F5> :Java<CR>
-autocmd Filetype python noremap <F5> :w<CR>:!python %<CR>
+autocmd Filetype python noremap <F5> :w<CR>:!python3 %<CR>
 
 
 " automatic closing parenthesis
