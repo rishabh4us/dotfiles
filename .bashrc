@@ -1,5 +1,8 @@
-# Mount external ext4 hard drive:
+# Mount external ext4 hard drive on mac:
 # sudo ext4fuse /dev/disk2s2 /external_hard_drive -o allow_other
+
+# Mount external ntfs hard drive on mac:
+# sudo /usr/local/bin/ntfs-3g /dev/disk2s1 /Volumes/NTFS_hard_drive -olocal -oallow_other -oauto_xattr
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
