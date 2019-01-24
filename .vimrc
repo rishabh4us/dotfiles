@@ -158,7 +158,6 @@ source $VIMRUNTIME/macros/matchit.vim " jump between pair of contructs (i.e. tag
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#use_splits_not_buffers = "right"
 let g:jedi#popup_select_first = 1
-let g:jedi#force_py_version = 3
 
 """ Syntastic
 let g:syntastic_python_checkers=['pep8']
