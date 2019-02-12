@@ -34,3 +34,13 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_162`
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
 fi
+
+# Mount my pg
+alias mountdevpg='sshfs -p 22 luca@dev:./pg ~/SSHFS/ -oauto_cache,reconnect,defer_permissions,negative_vncache,noapplexattr,noappledouble,volname=SSHFS'
+
+# Mount external ext4 hard drive on mac:
+alias mount_ext4='sudo ext4fuse </dev/disk2s2> /Volumes/ext4_hard_drive -o allow_other'
+
+# Mount external ntfs hard drive on mac:
+alias mount_ntfs='sudo /usr/local/bin/ntfs-3g </dev/disk2s1> /Volumes/NTFS_hard_drive -olocal -oallow_other -oauto_xattr'
+
