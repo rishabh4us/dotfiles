@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'          " let Vundle manage Vundle, required
 
 """ UTILS
 Plugin 'ervandew/supertab'          " allows to use <Tab> for all insert completion needs
-Plugin 'vim-scripts/Gundo'          " visualize the Vim undo tree
+Plugin 'simnalamburt/vim-mundo'     " visualize the Vim undo tree
 Plugin 'terryma/vim-multiple-cursors' " Sublime Text's awesome multiple selection feature into Vim
 Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
 Plugin 'tpope/vim-fugitive'         " git wrapper
@@ -292,8 +292,8 @@ nmap <silent><Leader>c <Esc>:Pytest class verbose<CR>
 nmap <silent><Leader>m <Esc>:Pytest method verbose<CR>
 nmap <silent><Leader>f <Esc>:Pytest function verbose<CR>
 
-""" Gundo
-nnoremap <Leader>u :GundoToggle<CR>
+""" Mundo
+nnoremap <Leader>u :MundoToggle<CR>
 
 """ TagBar 
 "map <unique> <F1> :TagbarToggle<CR>
