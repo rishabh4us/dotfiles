@@ -29,7 +29,7 @@ fi
 # makes steam minimized to system tray when closing the window
 export STEAM_FRAME_FORCE_CLOSE=1
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_162`
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/"
 
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
@@ -44,3 +44,16 @@ alias mount_ext4='sudo ext4fuse </dev/disk2s2> /Volumes/ext4_hard_drive -o allow
 # Mount external ntfs hard drive on mac:
 alias mount_ntfs='sudo /usr/local/bin/ntfs-3g </dev/disk2s1> /Volumes/NTFS_hard_drive -olocal -oallow_other -oauto_xattr'
 
+export GPG_TTY=$(tty)
+
+# Setting PATH for Python 3.6
+# The original version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH
+
+# start docker on mac os X
+
+function docker_start {
+    docker-machine start
+    eval $(docker-machine env default)
+}
