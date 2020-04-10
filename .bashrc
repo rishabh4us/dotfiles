@@ -144,3 +144,19 @@ function vim_diff_from {
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
+
+## COPY massive directories: 
+# $ rsync -nav $SOURCE $DESTINATION
+#
+# where:
+#  -n DRY_RUN
+#  -a archive (preserves most things and file attributes, includes -r)
+#  -v verbose
+#  -r recursive (included in -a)
+
+# DIFF entire directories:
+# $ rsync -navri --delete $SOURCE $DESTINATION
+#
+# where:
+#  -i itemize (gives complete info of the differences via flags)
+# --delete (for symmetrical comparisons, shows what items will be deleted in DEST)
