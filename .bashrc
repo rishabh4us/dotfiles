@@ -134,6 +134,10 @@ alias ccat='pygmentize -O style=monokai -f console256 -g'
 alias vim_staged="vim \$(git diff --name-only)"
 alias python='python3'
 
+## Secure remove
+function my_srm {
+    srm -flvr $1
+}
 
 function vim_diff_from {
     diff_param=$1
@@ -141,12 +145,12 @@ function vim_diff_from {
     vim $(git diff $diff_param --name-only)
 }
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if [ $(which brew) ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
 ## COPY massive directories: 
-# $ rsync -nav $SOURCE $DESTINATION
+# $ rsync -nav --progress $SOURCE $DESTINATION
 #
 # where:
 #  -n DRY_RUN
