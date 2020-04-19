@@ -16,8 +16,9 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=5000
+HISTFILESIZE=10000
+HISTTIMEFORMAT="%F %T " 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -124,6 +125,36 @@ fi
 # prompt always on a new line
 PS1=$PS1'\n\$ '
 
+PROMPT_COMMAND=__prompt_command # Function called after every command
+
+__print_time() {
+    echo -n "[$(date +%H:%M:%S)] "
+}
+
+__print_exit_code() {
+    local EXIT="$?"             # previous exit code
+
+    local Red='\033[0;31m'
+    local Gre='\033[0;32m'
+    local ResetColor='\033[0m'
+
+    local exitFormatted=""
+
+    if [ $EXIT != 0 ]; then
+        exitFormatted+="${Red}($EXIT)${ResetColor}"  # Add red if exit code non 0
+    else
+        exitFormatted+="${Gre}($EXIT)${ResetColor}"
+    fi
+
+    echo -en "$exitFormatted "
+}
+
+__prompt_command() {
+    __print_exit_code
+    __print_time
+}
+
+
 alias vim=nvim
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -136,7 +167,7 @@ alias python='python3'
 
 ## Secure remove
 function my_srm {
-    srm -flvr $1
+    srm -flvr $@
 }
 
 function vim_diff_from {
@@ -150,16 +181,17 @@ if [ $(which brew) ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 ## COPY massive directories: 
-# $ rsync -nav --progress $SOURCE $DESTINATION
+# $ rsync -nav --hard-links --progress $SOURCE $DESTINATION
 #
 # where:
 #  -n DRY_RUN
 #  -a archive (preserves most things and file attributes, includes -r)
 #  -v verbose
 #  -r recursive (included in -a)
+#  -H --hard-links (preserve hard links)
 
 # DIFF entire directories:
-# $ rsync -navri --delete $SOURCE $DESTINATION
+# $ rsync -navi --delete $SOURCE $DESTINATION
 #
 # where:
 #  -i itemize (gives complete info of the differences via flags)
