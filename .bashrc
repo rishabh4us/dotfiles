@@ -180,7 +180,12 @@ if [ $(which brew) ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-## COPY massive directories: 
+## Example: Wipe hard drive completely (note: must use sudo, careful cp-pasting)
+#
+# dd if=/dev/urandom bs=1M of=/dev/sda8
+
+## COPY massive directories (preserve permissions and hard links): 
+#
 # $ rsync -nav --hard-links --progress $SOURCE $DESTINATION
 #
 # where:
@@ -191,6 +196,7 @@ fi
 #  -H --hard-links (preserve hard links)
 
 # DIFF entire directories:
+#
 # $ rsync -navi --delete $SOURCE $DESTINATION
 #
 # where:
