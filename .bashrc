@@ -165,11 +165,6 @@ alias ccat='pygmentize -O style=monokai -f console256 -g'
 alias vim_staged="vim \$(git diff --name-only)"
 alias python='python3'
 
-## Secure remove
-function my_srm {
-    srm -flvr $@
-}
-
 function vim_diff_from {
     diff_param=$1
 
@@ -180,13 +175,32 @@ if [ $(which brew) ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
+## SECURE WIPING SECTION
+
+## Secure remove folder/files
+function my_srm {
+    srm -flvr $@
+}
+
 ## Example: Wipe hard drive completely (note: must use sudo, careful cp-pasting)
 #
 # dd if=/dev/urandom bs=1M of=/dev/sda8
 
+## ATA SECURE ERASE command (DO NOT attempt via USB)
+#
+# Information about the disk:
+#  hdparm -I /dev/X
+#
+# Need to set up a master psswrd:
+#  hdparm --user-master u --security-set-pass <passwd> /dev/X
+#
+# Run the command:
+#  time hdparm --user-master u --security-erase <passwd> /dev/X
+
+
 ## COPY massive directories (preserve permissions and hard links): 
 #
-# $ rsync -nav --hard-links --progress $SOURCE $DESTINATION
+# rsync -nav --hard-links --progress $SOURCE $DESTINATION
 #
 # where:
 #  -n DRY_RUN
@@ -197,7 +211,7 @@ fi
 
 # DIFF entire directories:
 #
-# $ rsync -navi --delete $SOURCE $DESTINATION
+# rsync -navi --delete $SOURCE $DESTINATION
 #
 # where:
 #  -i itemize (gives complete info of the differences via flags)
