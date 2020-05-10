@@ -17,7 +17,7 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # set PATH to include user's private bin directories
-export PATH="$HOME/local/bin:$HOME/.local/bin:/usr/local/sbin:$HOME/Library/Python/2.7/bin:$PATH"
+export PATH="$HOME/local/bin:$HOME/.local/bin:/usr/local/sbin:$PATH"
 
 # set MANPATH to include user's private manpath directories
 MANPATH="$HOME/local/share/man:$MANPATH"
@@ -29,31 +29,32 @@ fi
 # makes steam minimized to system tray when closing the window
 export STEAM_FRAME_FORCE_CLOSE=1
 
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/"
-
-if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
-  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
-fi
-
-# Mount my pg
-alias mountdevpg='sshfs -p 22 luca@dev:./pg ~/SSHFS/ -oauto_cache,reconnect,defer_permissions,negative_vncache,noapplexattr,noappledouble,volname=SSHFS'
-
-# Mount external ext4 hard drive on mac:
-alias mount_ext4='sudo ext4fuse </dev/disk2s2> /Volumes/ext4_hard_drive -o allow_other'
-
-# Mount external ntfs hard drive on mac:
-alias mount_ntfs='sudo /usr/local/bin/ntfs-3g </dev/disk2s1> /Volumes/NTFS_hard_drive -olocal -oallow_other -oauto_xattr'
-
 export GPG_TTY=$(tty)
 
-# Setting PATH for Python 3.6
-# The original version is saved in .profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
+### MAC OS X specific settings ###
+if [[ "$(uname -s)" == "Darwin" ]];
+then
+    if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ];
+    then
+      . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+    fi
 
-# start docker on mac os X
+    export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/"
 
-function docker_start {
-    docker-machine start
-    eval $(docker-machine env default)
-}
+    # Setting PATH for Python 3.6
+    # The original version is saved in .profile.pysave
+    PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+    export PATH
+
+    # start docker on mac os X
+    function docker_start {
+        docker-machine start
+        eval $(docker-machine env default)
+    }
+
+    # Mount external ext4 hard drive on mac:
+    alias mount_ext4='sudo ext4fuse </dev/disk2s2> /Volumes/ext4_hard_drive -o allow_other'
+
+    # Mount external ntfs hard drive on mac:
+    alias mount_ntfs='sudo /usr/local/bin/ntfs-3g </dev/disk2s1> /Volumes/NTFS_hard_drive -olocal -oallow_other -oauto_xattr'
+fi
