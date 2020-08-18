@@ -19,7 +19,7 @@ Plugin 'kien/ctrlp.vim'             " Full path fuzzy file finder for Vim
 Plugin 'tpope/vim-fugitive'         " git wrapper
 Plugin 'rking/ag.vim'               " text search into files
 Plugin 'honza/vim-snippets'         " default snippets
-Plugin 'SirVer/ultisnips'           " snippets for vim
+" Plugin 'SirVer/ultisnips'           " snippets for vim
 Plugin 'dhruvasagar/vim-table-mode' " table markdown
 
 """ LANGUAGE-SPECIFIC

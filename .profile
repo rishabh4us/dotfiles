@@ -39,7 +39,11 @@ then
       . `brew --prefix`/etc/bash_completion.d/git-completion.bash
     fi
 
-    export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/"
+    #export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/"
+    export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+
+    #scala 2.11
+    PATH="/usr/local/opt/scala@2.11/bin:${PATH}"
 
     # Setting PATH for Python 3.6
     # The original version is saved in .profile.pysave
