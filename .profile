@@ -26,10 +26,19 @@ if [ -f "$HOME/.utils.bash" ]; then
     source "$HOME/.utils.bash"
 fi
 
-# makes steam minimized to system tray when closing the window
-export STEAM_FRAME_FORCE_CLOSE=1
-
 export GPG_TTY=$(tty)
+
+### Linux specific settings
+if [[ "$(uname -s)" == "Linux" ]];
+then
+
+    # makes steam minimized to system tray when closing the window
+    export STEAM_FRAME_FORCE_CLOSE=1
+
+    # Swap ESC-CAPSLOC
+    setxkbmap -option caps:swapescape
+fi
+
 
 ### MAC OS X specific settings ###
 if [[ "$(uname -s)" == "Darwin" ]];
